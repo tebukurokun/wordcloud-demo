@@ -18,17 +18,16 @@ def main():
 
     word_str = get_word_str(text)
 
-    wc = WordCloud(font_path=FONT_PATH, max_font_size=40).generate(word_str)
+    wc = WordCloud(font_path=FONT_PATH, max_font_size=60).generate(word_str)
+    wc.to_file(FILE_NAME + ".png")
 
     plt.imshow(wc, interpolation='bilinear')
     plt.axis("off")
     plt.show()
 
-    wc.to_file(FILE_NAME + ".png")
-
 
 def get_word_str(text):
-    t = Tokenizer()
+    t = Tokenizer("userdic.csv", udic_enc="utf8")
     token = t.tokenize(text)
     word_list = []
 
